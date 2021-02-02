@@ -3,12 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { midstop, selectDateStart, start, stop } from '../../redux/canStopRecorder';
 import cx from 'classnames'
 
-
 export interface Props {
   
 }
  
-
 const addZero = (num: number) => (num < 10 ? `0${num}`: `${num}`);
 const CanStopRecorder = () => {
   const dispatch = useDispatch();
@@ -17,11 +15,19 @@ const CanStopRecorder = () => {
   let interval = useRef<number>(0)
   const [count, setCount] = useState<number>(0);
   const [canStop, setCanStop ] = useState<boolean>(false)
+
   const handleClick = () => {
-    
-    if (canStop) {
-      window.clearInterval(interval.current)
-      dispatch(midstop())
+    if(started) {
+      if(canStop) {
+        window.clearInterval(interval.current)
+        dispatch(midstop())
+      } else {
+        console.log('pass')
+        dispatch(start())
+        interval.current = window.setInterval(()=>{
+          setCount(count => count + 1)
+        },1000)
+      }
     } else {
       dispatch(start())
       interval.current = window.setInterval(()=>{
@@ -37,6 +43,7 @@ const CanStopRecorder = () => {
   },[])
 
   let seconds = started ? Math.floor((Date.now() - new Date(dateStart).getTime()) / 1000) : 0
+  console.log('dateStart',dateStart)
   const hours = seconds ? Math.floor(seconds/ 60 /60) : 0;
 
   seconds -= hours * 60 * 60;
