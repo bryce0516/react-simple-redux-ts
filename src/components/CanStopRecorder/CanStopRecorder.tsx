@@ -12,12 +12,9 @@ const CanStopRecorder = () => {
   const dispatch = useDispatch();
   let dateStart = useSelector(selectDateStart)
   let interval = useRef<number>(0)
-  const [count, setCount] = useState<number>(0);
-  const [canStop, setCanStop ] = useState<boolean>(false)
   const [second , setSecond] = useState<number>(0);
   const [minutes, setMinutes] = useState<number>(0);
   const [hours, sethours] = useState<number>(0);
-  const [click , setClick] = useState<number>(0);
 
   const timeHandle = () => { 
     if(dateStart === 0 ) {
@@ -80,7 +77,6 @@ const CanStopRecorder = () => {
         <button className="recorder-record" onClick={timeHandle} onDoubleClick={dbClickHandle}>
           <span></span>
         </button>
-        {/* <div>{minutes} : {second}</div> */}
         <div className="recorder-counter">{addZero(hours)}:{addZero(minutes)}:{addZero(second)}</div>
       </div>
     </>
