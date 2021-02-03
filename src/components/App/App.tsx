@@ -12,13 +12,10 @@ const App = () =>  {
         <ul>
           <li><NavLink to="/" >Recorder</NavLink></li>
           <li><NavLink to="/canstoprecorder" >CanStopRecorder</NavLink></li>
-          <li><NavLink to="/calendar" >Calendar</NavLink></li>
         </ul>
         <Switch>
           <Route exact path="/" component={Recorder} />
           <Route path="/canstoprecorder" component={CanStopRecorder} />
-          <Route path="/calendar" component={Calendar} />
-
         </Switch>
       </Router>
     </div>

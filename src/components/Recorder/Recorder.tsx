@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectDateStart, start, stop } from '../../redux/recorder';
 import './Recorder.css'
 import cx from 'classnames';
+import Calendar from '../Calendar';
+import { createUserEvent } from '../../redux/user-events';
 
 export interface Props {
 
@@ -20,6 +22,7 @@ const Recorder = () => {
   const handleClick = () => {
     if (started) {
       window.clearInterval(interval.current)
+      dispatch(createUserEvent())
       dispatch(stop())
     } else {
       dispatch(start())
@@ -43,12 +46,18 @@ const Recorder = () => {
   seconds -= minutes * 60;
   
   return (
-    <div className={cx('recorder', {'recorder-started': started})}>
-      <button className="recorder-record" onClick={handleClick}>
-        <span></span>
-      </button>
-      <div className="recorder-counter">{addZero(hours)}:{addZero(minutes)}:{addZero(seconds)}</div>
-    </div>
+    <>
+      <div className={cx('recorder', {'recorder-started': started})}>
+        <button className="recorder-record" onClick={handleClick}>
+          <span></span>
+        </button>
+        <div className="recorder-counter">{addZero(hours)}:{addZero(minutes)}:{addZero(seconds)}</div>
+      </div>
+      <div>
+        <Calendar />
+      </div>
+    </>
+
   );
 }
 
