@@ -53,9 +53,6 @@ const Recorder = () => {
         </button>
         <div className="recorder-counter">{addZero(hours)}:{addZero(minutes)}:{addZero(seconds)}</div>
       </div>
-      <div>
-        <Calendar />
-      </div>
     </>
 
   );

@@ -88,7 +88,7 @@ const Calendar: React.FC<Props> = ({ events, loadUserEvents }) => {
             </div>
             <div className="calendar-events">
               {events.map(event => {
-                return <EventItem key={event.id} event={event} />
+                return <EventItem key={`event_${event.id}`} event={event} />;
               })}
             </div>
           </div>
