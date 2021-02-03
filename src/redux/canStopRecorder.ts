@@ -2,7 +2,7 @@ import { Action } from 'redux'
 import {RootState} from "./store"
 
 interface CanStopRecorderState {
-  dateStart : string;
+  dateStart : number;
 }
 
 const START = 'canstop/start'
@@ -36,7 +36,7 @@ export const selectCanStopRecorderState = (rootState: RootState) => rootState.ca
 export const selectDateStart = (rootState: RootState) => selectCanStopRecorderState(rootState).dateStart
 
 const initialState: CanStopRecorderState = {
-  dateStart: ''
+  dateStart: 0
 }
 
 const canStopRecorderReducer = (
@@ -45,13 +45,11 @@ const canStopRecorderReducer = (
 ) => {
   switch(action.type) {
     case START:
-      return { ...state, dateStart: new Date().toISOString() }
+      return { ...state, dateStart: 1 }
     case STOP:
-      return { ...state, dateStart: ''};
+      return { ...state, dateStart: 0};
     case MIDSTOP:
-      return {...state}
-    case MIDSTART:
-      return {...state, dateStart: }
+      return {...state, dateStart: 0}
     default:
       return state;
   }
