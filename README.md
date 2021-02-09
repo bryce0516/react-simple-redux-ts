@@ -1,3 +1,12 @@
+# How to build a project?
+git clone ~
+npm install
+
+-> This is must be. If you are using port 3001, please turn it off
+npx json-server --watch json-server/db.json --port 3001  
+npm start --reset-cache
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

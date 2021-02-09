@@ -83,7 +83,7 @@ const Calendar: React.FC<Props> = ({ events, loadUserEvents }) => {
           <div className="calendar-day">
             <div className="calendar-day-label">
               <span>
-                {day} {month}
+                {day}일 {month}
               </span>
             </div>
             <div className="calendar-events">
